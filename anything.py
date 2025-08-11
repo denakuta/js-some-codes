@@ -1,6 +1,8 @@
 ##НЕПРАВИЛЬНО
 # from testing_import import my_list
 from calendar import month
+from operator import length_hint
+
 
 # n = int(input())
 # hours = n // 60
@@ -77,6 +79,28 @@ from calendar import month
 #     print(f'{int(parts[2])} {months[parts[1]]} {parts[0]}')
 
 
-greet = 'Пользователь {name}, зашел в {hour} часов'
-print(greet.format(name='Иван', hour=12))
+# greet = 'Пользователь {name}, зашел в {hour} часов'
+# print(greet.format(name='Иван', hour=12))
 
+# text = 'qweQWES&? cjsd выфафы'
+# print(text.casefold().upper().strip().split())
+
+# class Solution(object):
+#     def lengthOfLastWord(self, s):
+#         """
+#         :type s: str
+#         :rtype: int
+#         """
+#         return len(s.split()[-1])
+
+# class Solution(object):
+#     def plusOne(self, digits):
+#         """
+#         :type digits: List[int]
+#         :rtype: List[int]
+#         """
+#         nums = ''.join(str(d) for d in digits)
+#         int_num = int(nums)
+#         int_num += 1
+#         str_num = [int(d) for d in str(int_num)]
+#         return str_num
