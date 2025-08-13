@@ -1,19 +1,5 @@
 {
-    "response": {
-        "count": 5961878,
-        "items": [
-            {
-                "first name": "\u0415\u043b\u0438\u0437\u0430\u0432\u0435\u0442\u0430",
-                "id": 620471795,
-                "last_name": "\u0421\u043e\u043f\u043e\u0432\u0430",
-                "can_access_closed": true
-            },
-            {
-                "first name": "\u0420\u043e\u043c\u0430\u043d",
-                "id": 614752515,
-                "last_name": "\u041c\u0430\u043b\u044b\u0448\u0435\u0432",
-                "can access closed": true
-            }
-        ]
-    }
+    "Alice": "+123456789",
+    "Bob": "+987654321",
+    "Timur": "+111111111"
 }

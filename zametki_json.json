@@ -1,0 +1,14 @@
+{
+    "Тестовая": {
+        "text": "Текст заметки",
+        "completed": false
+    },
+    "еще тестик": {
+        "text": "smtn",
+        "completed": true
+    },
+    "111": {
+        "text": "2313",
+        "completed": false
+    }
+}

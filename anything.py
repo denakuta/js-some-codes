@@ -1,7 +1,7 @@
 ##НЕПРАВИЛЬНО
 # from testing_import import my_list
-from calendar import month
-from operator import length_hint
+# import webbrowser as
+import json
 
 
 # n = int(input())
@@ -104,3 +104,49 @@ from operator import length_hint
 #         int_num += 1
 #         str_num = [int(d) for d in str(int_num)]
 #         return str_num
+
+# class Building:
+#     __year = None
+#     __city = None
+#
+#
+#     def __init__(self, year, city):
+#         self.year = year
+#         self.city = city
+#
+#     def get_info(self):
+#         print('Year: ', self.year, '. City: ', self.city)
+#
+# class School(Building):
+#     People = 0
+#
+#     def  __init__(self, year, city, People):
+#         super().__init__(year, city)
+#         self.People = People
+#
+#     def get_info(self):
+#         super().get_info()
+#         print('People: ', self.People)
+#
+# school = School(2000, 'Moscow', 100)
+# house = Building(2010, 'Moscow')
+# shop = Building(2000, 'Moscow')
+#
+# school.get_info()
+
+
+
+# def validator(func):
+#     def wrapper(url):
+#         if '.' in url:
+#             func(url)
+#         else:
+#             print('Некорректный URL')
+#     return wrapper
+#
+#
+# @validator
+# def open_url(url):
+#     web.open(url)
+#
+# open_url('pornhub.com/furry')
