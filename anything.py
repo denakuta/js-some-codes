@@ -4,6 +4,7 @@
 import json
 
 
+
 # n = int(input())
 # hours = n // 60
 # if hours < 24:
@@ -150,3 +151,20 @@ import json
 #     web.open(url)
 #
 # open_url('pornhub.com/furry')
+
+# l1 = [2,4,3]
+# l2 = [5,6,4]
+#
+# l1 = ''.join(map(str, reversed(list(l1))))
+# l2 = ''.join(map(str, reversed(list(l1))))
+#
+#
+# answer = int(l2) + int(l1)
+# my_list = reversed(str(answer))
+# listlist = list(my_list)
+# print(listlist)
+
+# a = 1
+# b = 2
+# c = [a, b]
+# print(sum(c))
