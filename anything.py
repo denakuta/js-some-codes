@@ -1,9 +1,8 @@
 ##НЕПРАВИЛЬНО
 # from testing_import import my_list
 # import webbrowser as
-import json
-
-
+# import json
+from operator import index
 
 # n = int(input())
 # hours = n // 60
@@ -168,3 +167,50 @@ import json
 # b = 2
 # c = [a, b]
 # print(sum(c))
+
+# text = str(input())
+# cost = 0
+# r = 0
+# for i in text:
+#     cost += 60
+#     if cost > 100:
+#         cost -= 100
+#         r += 1
+# print(r, 'р.', round(cost, 1), 'коп.')
+
+# a = 'All forever young'
+# a.count('')
+# print(len(input().strip().split()))
+
+
+# zodiac = {
+#     0: 'Обезьяна',
+#     1: 'Петух',
+#     2: 'Собака',
+#     3: 'Свинья',
+#     4: 'Крыса',
+#     5: 'Бык',
+#     6: 'Тигр',
+#     7: 'Заяц',
+#     8: 'Дракон',
+#     9: 'Змея',
+#     10: 'Лошадь',
+#     11: 'Овца'
+# }
+#
+# age = int(input()) % 12
+# print(zodiac[list(zodiac.keys())[age]])
+
+# numn = int(input())
+# print(f"{n:,}")
+
+# def isPowerOfFour(n):
+#     return n % 0.25 == 0
+# isPowerOfFour(5)
+
+nums = [2,7,11,15]
+target = 9
+
+for i in range(len(nums)):
+    if nums[i] + nums[i - 1] == target:
+        print(i, i-1)
