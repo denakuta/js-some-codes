@@ -208,9 +208,9 @@ from operator import index
 #     return n % 0.25 == 0
 # isPowerOfFour(5)
 
-nums = [2,7,11,15]
-target = 9
-
-for i in range(len(nums)):
-    if nums[i] + nums[i - 1] == target:
-        print(i, i-1)
+# nums = [2,7,11,15]
+# target = 9
+#
+# for i in range(len(nums)):
+#     if nums[i] + nums[i - 1] == target:
+#         print(i, i-1)
