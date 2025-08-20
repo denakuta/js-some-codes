@@ -1,21 +1,16 @@
-import sqlite3
 from fastapi import FastAPI
 from pydantic import BaseModel
 
 app = FastAPI()
 
-connect = sqlite3.connect('book_shop.db')
-cursor = connect.cursor()
-
-items = cursor.execute('SELECT * FROM books WHERE id = ?')
 
 
-# items = [
-#     {'item_id': 1, 'item_title': 'smthn', 'item_body': 'rand desc'},
-#     {'item_id': 2, 'item_title': 'smthn2', 'item_body': 'rand desc2'},
-#     {'item_id': 3, 'item_title': 'smthn3', 'item_body': 'rand desc3'},
-#     {'item_id': 4, 'item_title': 'smthn4', 'item_body': 'rand desc4'},
-# ]
+items = [
+    {'item_id': 1, 'item_title': 'smthn', 'item_body': 'rand desc'},
+    {'item_id': 2, 'item_title': 'smthn2', 'item_body': 'rand desc2'},
+    {'item_id': 3, 'item_title': 'smthn3', 'item_body': 'rand desc3'},
+    {'item_id': 4, 'item_title': 'smthn4', 'item_body': 'rand desc4'},
+]
 
 
 class Item(BaseModel):
