@@ -1,7 +1,4 @@
-from pyexpat.errors import messages
-from typing import Optional
-
-from fastapi import FastAPI
+from fastapi import FastAPI, HTTPException
 import sqlite3
 from pydantic import BaseModel
 
@@ -20,19 +17,32 @@ class Note(BaseModel):
     body: str
 
 
+class NoteResponse(BaseModel):
+    id: int
+    title: str
+    body: str
+
+
+def get_db_connection():
+    conn = sqlite3.connect('notes.db')
+    conn.row_factory = sqlite3.Row  # чтобы можно было обращаться к колонкам по имени
+    return conn
+
+
 @app.get("/ping")
-def ping():
+async def ping():
     return {"status": "OK"}
 
 
 @app.get("/")
-def root():
+async def root():
     return {"message": "Welcome to the API"}
 
 
 @app.post('/notes')
-def post_notes(note: Note):
-    with sqlite3.connect('notes.db') as conn:
+async def post_notes(note: Note):
+    with get_db_connection() as conn:
+        cursor = conn.cursor()
         cursor.execute(
             'INSERT INTO notes (title, body) VALUES (?, ?)',
             (note.title, note.body)
@@ -41,3 +51,11 @@ def post_notes(note: Note):
         new_id = cursor.lastrowid
     return {'Note created': 'Successfully'}
 
+
+@app.get('/notes', response_model=list[NoteResponse])
+async def get_all_notes():
+    with get_db_connection() as conn:
+        cursor = conn.cursor()
+        cursor.execute("SELECT id, title, body FROM notes")
+        rows = cursor.fetchall()
+        return [dict(row) for row in rows]
