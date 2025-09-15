@@ -59,3 +59,36 @@ async def get_all_notes():
         cursor.execute("SELECT id, title, body FROM notes")
         rows = cursor.fetchall()
         return [dict(row) for row in rows]
+
+
+@app.get('/notes/{note_id}', response_model=NoteResponse)
+async def get_note(note_id: int):
+    with get_db_connection() as conn:
+        cursor = conn.cursor()
+        cursor.execute("SELECT id, title, body FROM notes WHERE id = (?)", (note_id,))
+        row = cursor.fetchone()
+        if not row:
+            raise HTTPException(status_code=404, detail="Note not found")
+        return dict(row)
+
+
+@app.put('/add-note/{note_id}')
+async def update_note(note_id: int, note: Note):
+    with get_db_connection() as conn:
+        cursor = conn.cursor()
+        cursor.execute("SELECT id, title, body FROM notes WHERE id = (?)", (note_id,))
+        row = cursor.fetchone()
+
+        if not row:
+            raise HTTPException(status_code=404, detail='Заметка не найдена')
+
+        cursor.execute(
+            """
+            UPDATE notes
+            SET title = ?, body = ?
+            WHERE id = ?
+            """,
+            (note.title, note.body, note_id)
+        )
+        conn.commit()
+    return {'message': 'updated'}
