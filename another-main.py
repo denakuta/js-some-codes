@@ -1,4 +1,4 @@
-from fastapi import FastAPI, HTTPException
+from fastapi import FastAPI, HTTPException, Query
 import sqlite3
 from pydantic import BaseModel
 
@@ -61,15 +61,27 @@ async def get_all_notes():
         return [dict(row) for row in rows]
 
 
-@app.get('/notes/{note_id}', response_model=NoteResponse)
-async def get_note(note_id: int):
-    with get_db_connection() as conn:
-        cursor = conn.cursor()
-        cursor.execute("SELECT id, title, body FROM notes WHERE id = (?)", (note_id,))
-        row = cursor.fetchone()
-        if not row:
-            raise HTTPException(status_code=404, detail="Note not found")
-        return dict(row)
+# @app.get('/notes/{note_id}', response_model=NoteResponse)
+# async def get_note(note_id: int):
+#     with get_db_connection() as conn:
+#         cursor = conn.cursor()
+#         cursor.execute("SELECT id, title, body FROM notes WHERE id = (?)", (note_id,))
+#         row = cursor.fetchone()
+#         if not row:
+#             raise HTTPException(status_code=404, detail="Note not found")
+#         return dict(row)
+
+
+@app.get('/notes')
+async def get_note(id: int = Query(..., description="ID заметки")):
+    conn = get_db_connection()
+    note = conn.execute('SELECT * FROM notes WHERE id = ?', (id,))
+    row = cursor.fetchone()
+    conn.close()
+
+    if row is None:
+        raise HTTPException(status_code=404, detail='Cant find note')
+    return dict(row)
 
 
 @app.put('/add-note/{note_id}')
