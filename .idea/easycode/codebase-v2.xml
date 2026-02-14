@@ -1,0 +1,9 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="com.obiscr.chatgpt.settings.EasyCodeState">
+    <option name="projectFiles" value="$PROJECT_DIR$/main.py" />
+    <option name="forceFullIndex" value="false" />
+    <option name="fileSummaryMaps" value="{&quot;/home/denakuta/PycharmProjects/PythonProject&quot;:&quot;{\&quot;/main.py\&quot;:\&quot;There are no classes or functions in the provided file. The file appears to be an empty XML document with a `\\u003cdocument\\u003e` tag, but no content within it.\&quot;}&quot;}" />
+    <option name="fileSkeletonMaps" value="{&quot;/home/denakuta/PycharmProjects/PythonProject&quot;:&quot;{\&quot;/main.py\&quot;:{\&quot;file_path\&quot;:\&quot;/main.py\&quot;,\&quot;file_name\&quot;:\&quot;main.py\&quot;,\&quot;methods\&quot;:[]}}&quot;}" />
+  </component>
+</project>
