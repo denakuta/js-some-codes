@@ -2,7 +2,7 @@ from fake_useragent import UserAgent
 from bs4 import BeautifulSoup
 import requests, subprocess
 
-ua = UserAgent().random
+ua = {"User-Agent": UserAgent().random}
 response = requests.get('https://books.toscrape.com/', ua)
 
 # if response.status_code == 200:
