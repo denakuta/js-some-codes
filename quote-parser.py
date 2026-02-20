@@ -28,10 +28,17 @@ parser.add_argument(
 
 args = parser.parse_args()
 
+url = 'https://quotes.toscrape.com/'
+headers = {"User-Agent": UserAgent().random}
+
+curr_url = url
+
+quotes = []
+counter = 0
+all_quotes = []
 
 
-
-def search(quotes):
+def search():
     result = []
 
     for quote in quotes:
@@ -57,14 +64,6 @@ def search(quotes):
     return result
 
 
-url = 'https://quotes.toscrape.com/'
-headers = {"User-Agent": UserAgent().random}
-curr_url = url
-quotes = []
-counter = 0
-all_quotes = []
-
-
 pages_bar = tqdm(
     desc="Pages",
     unit=" pages",
@@ -76,8 +75,6 @@ quotes_bar = tqdm(
     unit=' quotes',
     position=1)
 
-
-
 while curr_url:
     counter += 1
     response = requests.get(curr_url, headers=headers)
@@ -86,9 +83,7 @@ while curr_url:
     soup = BeautifulSoup(text, 'html.parser')
     quotes = soup.find_all('div', class_='quote')
 
-
-
-    found = search(quotes)
+    found = search()
     all_quotes.extend(found)
 
     quotes_bar.update(len(found))
@@ -106,7 +101,6 @@ while curr_url:
         if counter >= args.pages:
             break
 
-
 if args.output:
     with open(args.output, 'w', encoding='utf-8') as f:
         json.dump(all_quotes, f, indent=4, ensure_ascii=False)
@@ -114,6 +108,5 @@ if args.output:
 else:
     for q in all_quotes:
         print(f'{q['text'][1:-1]}\n\nby: {q['author']}\ntags:{', '.join(q['tags'])}\n\n', end='')
-
 
 print(f'Scraping in {time.time() - start:.2f}s')
