@@ -43,7 +43,7 @@ def search(quotes):
         for tag in tags:
             lst.append(tag.text)
         if args.tag:
-            if args.tag in lst:
+            if args.tag not in lst:
                 continue
 
         data = {
@@ -60,7 +60,7 @@ def search(quotes):
 url = 'https://quotes.toscrape.com/'
 headers = {"User-Agent": UserAgent().random}
 curr_url = url
-
+quotes = []
 counter = 0
 all_quotes = []
 
@@ -87,7 +87,7 @@ while curr_url:
     quotes = soup.find_all('div', class_='quote')
 
 
-    # print(f'>>>>>Page: {counter}<<<<<\nFound {len(quotes)} qoutes\n')
+
     found = search(quotes)
     all_quotes.extend(found)
 
